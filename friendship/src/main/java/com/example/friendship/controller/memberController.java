@@ -83,7 +83,8 @@ public class memberController {
 
     @PostMapping("/join")
     public String join(){
-        
+
+        return "join";
     }
 
 
