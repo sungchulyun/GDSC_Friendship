@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<h2>환영 합니다. <span th:text="${member.mid}"></span></h2>
+<form th:action="logout" method="post">
+    <button type="submit">로그아웃</button>
+</form>
+</body>
+</html>
