@@ -31,9 +31,9 @@ public class memberService {
             if (member.getMpw().equals(lgmember.get().getMpw())) {
                 System.out.println(member.getMpw());
                 System.out.println("로그인 성공");
+                return lgmember;
             }
         }
-        return lgmember;
-
+        return null;
     }
 }
