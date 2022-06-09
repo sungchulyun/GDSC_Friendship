@@ -9,6 +9,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,9 +21,13 @@ public class Member {
 
     @Id
     @NotBlank(message = "아이디를 입력해주세요.")
+    @Size(min=2, max=10)
+    @Pattern(regexp = "[a-zA-Z0-9]*")
     private String mid;
 
     @NotBlank(message = "비밀번호를 입력해주세요.")
+    @Size(min=2, max=10)
+    @Pattern(regexp = "[a-zA-Z0-9]*")
     private String mpw;
 
     @Email(message = "이메일 형식을 맞춰주세요.")

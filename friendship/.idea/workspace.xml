@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a10dabf-1fa5-4290-bb94-61d85fa6d303" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/com/example/friendship/session/SessionManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/friendship/controller/memberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/friendship/controller/memberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/friendship/entity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/friendship/entity/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/friendship/service/memberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/friendship/service/memberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +48,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yoon\Desktop\GDSC\friendship\src\main\resources" />
+      <recent name="C:\Users\yoon\Desktop\GDSC\friendship\src\main\resources\templates" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="FriendshipApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">

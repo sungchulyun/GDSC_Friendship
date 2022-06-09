@@ -20,13 +20,26 @@ public class memberService {
 
     }
 
-    public Optional<Member> login(Member member, String mid, String mpw, BindingResult bindingResult) {
+    public Member login(String mid, String mpw) {
 
 
         Optional<Member> lgmember = memberRepository.findById(mid);
 
+        return memberRepository.findById(mid)
+                .filter(m -> m.getMpw().equals(mpw))
+                .orElse(null);
+    }
+}
 
-        if (member.getMid().equals(lgmember.get().getMid())) {
+
+
+
+
+
+
+
+
+       /* if (member.getMid().equals(lgmember.get().getMid())) {
 
             if (member.getMpw().equals(lgmember.get().getMpw())) {
                 System.out.println(member.getMpw());
@@ -37,3 +50,4 @@ public class memberService {
         return null;
     }
 }
+*/

@@ -7,8 +7,15 @@
 <body>
 
 <form th:action="loginPro" method="post" th:object="${member}">
+    <div>
     <input id="username" type="text" name="username" th:field="*{mid}" placeholder="아이디">
+        <p th:if="${#fields.hasErrors('mid')}" th:error="*{mid}"></p>
+    </div>
+
+    <div>
     <input id="password" type="password" name="password" th:field="*{mpw}" placeholder="비밀번호">
+        <p th:if="${#fields.hasErrors('mpw')}" th:error="*{mpw}"></p>
+    </div>
     <button type="submit">로그인</button>
     <a href="/join">회원 가입</a>
 </form>

@@ -5,6 +5,7 @@ import com.example.friendship.interceptor.loginInterceptor;
 import com.example.friendship.service.memberService;
 import com.example.friendship.session.SessionConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 
@@ -28,34 +30,37 @@ public class memberController {
     }
 
     @PostMapping("/loginPro")
-    public String loginPro(@ModelAttribute Member member, BindingResult bindingResult, HttpServletRequest request,
+    public String loginPro(@ModelAttribute Member member, @Valid Member member2, BindingResult bindingResult, HttpServletRequest request,
                            Model model) {
 
+        if (bindingResult.hasErrors()) {
+            return "/login";
+        }
 
-        Member loginmember = memberservice.login(member, member.getMid(), member.getMpw(), bindingResult).get();
+
+        Member loginmember = memberservice.login(member.getMid(), member.getMpw());
+
+        if (loginmember == null) {
+            bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
+            return "/login";
+        }
 
         HttpSession session = request.getSession();
         session.setAttribute(SessionConstants.LOGIN_MEMBER, loginmember);
 
-
-        return "redirect:/";
+        return "/loginhome";
 
     }
 
     @GetMapping("/")
-    public String loginHome(HttpServletRequest request, Model model){
+    public String loginHome(@SessionAttribute(name = SessionConstants.LOGIN_MEMBER, required = false)Member loginmember, Model model){
 
-        HttpSession session = request.getSession(false);
-        if(session == null){
-            return "/index";
+        if(loginmember == null){
+
+            return "/home";
         }
-        Member loginmember2 = (Member) session.getAttribute(SessionConstants.LOGIN_MEMBER);
+        model.addAttribute("member", loginmember);
 
-        if(loginmember2==null){
-            return "/index";
-        }
-
-       model.addAttribute("member", loginmember2);
        return "loginhome";
 
 
@@ -64,9 +69,10 @@ public class memberController {
     @PostMapping("/logout")
     public String logout(HttpServletRequest request, Model model){
 
-        System.out.println(request.getSession());
-        request.getSession(false).invalidate();
-        System.out.println(request.getSession());
+
+        HttpSession session=  request.getSession(false);
+        session.invalidate();
+
 
         return "redirect:/";
 
