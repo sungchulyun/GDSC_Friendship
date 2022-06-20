@@ -1,11 +1,9 @@
 package com.example.friendship.controller;
 
 import com.example.friendship.entity.Member;
-import com.example.friendship.interceptor.loginInterceptor;
-import com.example.friendship.service.memberService;
+import com.example.friendship.service.loginService;
 import com.example.friendship.session.SessionConstants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,7 +18,7 @@ import javax.validation.Valid;
 public class memberController {
 
     @Autowired
-    private memberService memberservice;
+    private loginService memberservice;
 
 
     @GetMapping("login")
@@ -30,8 +28,8 @@ public class memberController {
     }
 
     @PostMapping("/loginPro")
-    public String loginPro(@ModelAttribute Member member, @Valid Member member2, BindingResult bindingResult, HttpServletRequest request,
-                           Model model) {
+    public String loginPro(@ModelAttribute Member member, @Valid Member Member, BindingResult bindingResult,
+                           HttpServletRequest request, Model model) {
 
         if (bindingResult.hasErrors()) {
             return "/login";
@@ -79,9 +77,21 @@ public class memberController {
     }
 
     @GetMapping("/join")
-    public String join(){
+    public String join(@ModelAttribute Member member){
 
-        return "join";
+        return "/join";
+    }
+
+    @PostMapping("/joinPro")
+    public String joinPro(@ModelAttribute Member member, @Valid Member Member, BindingResult bindingResult, Model model){
+
+        if (bindingResult.hasErrors()) {
+            return "/join";
+        }
+
+        memberservice.signIn(member);
+
+        return "/home";
     }
 
 
